@@ -3,6 +3,7 @@ package com.alite.crud;
 //import com.alita.crud.mapper.DepartmentMapper;
 import com.alita.crud.bean.Department;
 import com.alita.crud.mapper.DepartmentMapper;
+import com.alita.crud.mapper.EmployeeMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,20 @@ public class MapperTest {
     @Autowired
     private DepartmentMapper departmentMapper;
 
+    @Autowired
+    private EmployeeMapper empMapper;
+
     @Test
     public void testCRUD() {
 
-        Department dept = new Department();
-        departmentMapper.insertSelective(dept);
+//        Department dept = new Department();
+//        departmentMapper.insertSelective(dept);
 //        System.out.println("departmentMapper = " + departmentMapper);
+
+        System.out.println("MapperTest.testCRUD");
+        empMapper.selectAllEmp();
+
+        System.out.println("MapperTest.testCRUD1111");
     }
 
 

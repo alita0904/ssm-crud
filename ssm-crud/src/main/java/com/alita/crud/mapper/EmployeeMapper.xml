@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alita.crud.mapper.EmployeeMapper">
+
+
+  <resultMap id="emp_dept_map" type="Employee">
+    <id property="empId" column="emp_id"/>
+    <result property="empName" column="emp_name"/>
+    <result property="gender" column="gender"/>
+    <result property="email" column="email"/>
+    <association property="dept" javaType="Department">
+      <id property="deptId" column="dept_id"/>
+      <result property="deptName" column="dept_name"/>
+    </association>
+
+  </resultMap>
+
+  <sql id="emp_dept_colum_list">
+    e.emp_id, e.emp_name, e.gender, e.email, e.dept_id, d.dept_name
+  </sql>
+
+  <select id="selectAllEmp" resultMap="emp_dept_map">
+    select <include refid="emp_dept_colum_list"/>
+    from tbl_emp e left join tbl_dept d on e.dept_id = d.dept_id
+  </select>
+
   <resultMap id="BaseResultMap" type="com.alita.crud.bean.Employee">
     <id column="emp_id" jdbcType="INTEGER" property="empId" />
     <result column="emp_name" jdbcType="VARCHAR" property="empName" />

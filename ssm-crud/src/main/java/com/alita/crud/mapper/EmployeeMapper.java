@@ -6,6 +6,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface EmployeeMapper {
+
+    /**
+     * 查询所有的员工
+     * @return
+     */
+    List<Employee> selectAllEmp();
+
+
     long countByExample(EmployeeExample example);
 
     int deleteByExample(EmployeeExample example);

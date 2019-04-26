@@ -12,4 +12,10 @@
         <package name="com.alita.crud.bean"/>
     </typeAliases>
 
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+        </plugin>
+    </plugins>
+
 </configuration>
